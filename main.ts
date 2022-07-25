@@ -20,11 +20,14 @@ function curtainDown () {
         basic.pause(500)
     }
 }
+input.onButtonPressed(Button.AB, function () {
+    control.reset()
+})
 radio.onReceivedString(function (receivedString) {
-    if (name == "down") {
+    if (receivedString == "down") {
         curtainDown()
-    } else if (name == "up") {
-        curtainDown()
+    } else if (receivedString == "up") {
+        curtainUp()
     }
 })
 input.onButtonPressed(Button.B, function () {
@@ -36,6 +39,8 @@ input.onButtonPressed(Button.B, function () {
 let currentLevel = 0
 let level = 0
 radio.setGroup(103)
+radio.setTransmitSerialNumber(true)
+radio.setTransmitPower(7)
 level = 0
 currentLevel = 0
 for (let index = 0; index <= 4; index++) {
